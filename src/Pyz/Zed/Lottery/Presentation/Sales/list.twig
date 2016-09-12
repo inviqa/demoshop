@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-sm-12">
+        {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Lottery' } %}
+            {% block widget_content %}
+                <table class="footable table table-striped toggle-arrow-tiny" data-qa="lottery-list">
+                    <thead>
+                    <tr class="text-left">
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>E-Mail</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >{{ lottery.firstName }}</td>
+                            <td >{{ lottery.lastName }}</td>
+                            <td >{{ lottery.email }}</td>
+                            <td >{{ lottery.status }}</td>
+                            <td >{{ lottery.description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endblock %}
+        {% endembed %}
+    </div>
+</div>

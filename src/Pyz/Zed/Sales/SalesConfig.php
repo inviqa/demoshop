@@ -49,6 +49,7 @@ class SalesConfig extends SprykerSalesConfig
     {
         $projectExternalBlocks = [
             'totals' => '/sales-aggregator/sales/list',
+            'lottery' => '/lottery/sales/list',
             'shipment' => '/shipment/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',

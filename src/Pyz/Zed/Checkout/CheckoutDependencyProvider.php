@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Checkout;
 
+use Pyz\Zed\Lottery\Communication\Plugin\OrderLotterySavePlugin;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 
@@ -50,6 +51,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new OrderCustomerSavePlugin(),
             new SalesOrderSaverPlugin(),
             new ProductOptionOrderSaverPlugin(),
+            new OrderLotterySavePlugin(),
             new OrderShipmentSavePlugin(),
             new DiscountOrderSavePlugin(),
             new PaymentSaverPlugin(),
