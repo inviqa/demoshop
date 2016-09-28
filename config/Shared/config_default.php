@@ -390,6 +390,7 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
     ],
     'Oms' => [
         'DummyPayment',
+        'Lottery'
     ],
 ];
 
