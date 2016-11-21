@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e5e6ac8c1ec59f26839bf73bd83495f5",
-    "content-hash": "1b002db655af0f6cf854741b97c763f0",
+    "hash": "c6272eb9128927c7fec04d7749e7bd35",
+    "content-hash": "20cdbce86f9332c737c89700a5fbaf3c",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -12298,6 +12298,45 @@
             "time": "2016-04-29 17:38:05"
         },
         {
+            "name": "spryker/code-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/code-generator.git",
+                "reference": "b7273adb67c39fbab80532eb8655bed9bcd05a99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/b7273adb67c39fbab80532eb8655bed9bcd05a99",
+                "reference": "b7273adb67c39fbab80532eb8655bed9bcd05a99",
+                "shasum": ""
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Spryker": "src/",
+                    "Acceptance": "tests/",
+                    "Functional": "tests/",
+                    "Integration": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CodeGenerator bundle",
+            "time": "2016-11-18 17:28:34"
+        },
+        {
             "name": "spryker/code-sniffer",
             "version": "0.6.8",
             "source": {
@@ -12582,7 +12621,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "spryker/code-generator": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
