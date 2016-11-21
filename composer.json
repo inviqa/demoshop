@@ -108,9 +108,11 @@
     "spryker/zend": "^2.0.0"
   },
   "require-dev": {
-    "codeception/codeception": "~2.1.11",
     "codeception/c3": "~2.0.0",
+    "codeception/codeception": "~2.1.11",
+    "jakoch/phantomjs-installer": "^2.1",
     "pdepend/pdepend": "~2.2.4",
+    "php-mock/php-mock": "^1.0",
     "phploc/phploc": "~3.0.1",
     "phpmd/phpmd": "~2.4.3",
     "sebastian/phpcpd": "~2.0.2",
@@ -118,9 +120,8 @@
     "silex/web-profiler": "~1.0.8",
     "site5/phantoman": "^1.1",
     "sllh/composer-versions-check": "~2.0.2",
-    "spryker/code-sniffer": "*",
-    "jakoch/phantomjs-installer": "^2.1",
-    "php-mock/php-mock": "^1.0"
+    "spryker/code-generator": "dev-master",
+    "spryker/code-sniffer": "*"
   },
   "autoload": {
     "psr-0": {
