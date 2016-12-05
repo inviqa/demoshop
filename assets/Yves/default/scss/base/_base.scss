@@ -36,3 +36,7 @@ i {
 .__success {
     color: map-get($foundation-palette, success);
 }
+
+.row {
+    background-color: red !important;
+}
