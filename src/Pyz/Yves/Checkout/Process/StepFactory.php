@@ -18,6 +18,7 @@ use Pyz\Yves\Checkout\Process\Steps\PlaceOrderStep;
 use Pyz\Yves\Checkout\Process\Steps\ShipmentStep;
 use Pyz\Yves\Checkout\Process\Steps\SuccessStep;
 use Pyz\Yves\Checkout\Process\Steps\SummaryStep;
+use Pyz\Yves\Checkout\Process\Steps\VoucherStep;
 use Spryker\Yves\Checkout\Process\StepFactory as SprykerStepFactory;
 use Spryker\Yves\StepEngine\Process\StepCollection;
 
@@ -40,6 +41,7 @@ class StepFactory extends SprykerStepFactory
             ->addStep($this->createAddressStep())
             ->addStep($this->createShipmentStep())
             ->addStep($this->createPaymentStep())
+            ->addStep($this->createVoucherStep())
             ->addStep($this->createSummaryStep())
             ->addStep($this->createPlaceOrderStep())
             ->addStep($this->createSuccessStep());
@@ -114,6 +116,17 @@ class StepFactory extends SprykerStepFactory
             CheckoutControllerProvider::CHECKOUT_PAYMENT,
             ApplicationControllerProvider::ROUTE_HOME,
             $this->getFlashMessenger()
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\Checkout\Process\Steps\VoucherStep
+     */
+    protected function createVoucherStep()
+    {
+        return new VoucherStep(
+            CheckoutControllerProvider::CHECKOUT_VOUCHER,
+            ApplicationControllerProvider::ROUTE_HOME
         );
     }
 

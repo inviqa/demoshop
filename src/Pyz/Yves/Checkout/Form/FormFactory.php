@@ -10,6 +10,7 @@ namespace Pyz\Yves\Checkout\Form;
 use Pyz\Yves\Checkout\CheckoutDependencyProvider;
 use Pyz\Yves\Checkout\Form\DataProvider\SubFormDataProviders;
 use Pyz\Yves\Checkout\Form\Steps\PaymentForm;
+use Pyz\Yves\Checkout\Form\Steps\VoucherForm;
 use Pyz\Yves\Checkout\Form\Steps\SummaryForm;
 use Pyz\Yves\Customer\Form\CheckoutAddressCollectionForm;
 use Pyz\Yves\Customer\Form\CustomerCheckoutForm;
@@ -85,6 +86,19 @@ class FormFactory extends SprykerFormFactory
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer
+     *
+     * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
+     */
+    public function createVoucherFormCollection()
+    {
+        return $this->createFormCollection(
+            $this->createVoucherFormTypes(),
+            $this->getVoucherFormDataProviderPlugin()
+        );
+    }
+
+    /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $subForms
      *
      * @return \Pyz\Yves\Checkout\Form\DataProvider\SubFormDataProviders
@@ -155,6 +169,16 @@ class FormFactory extends SprykerFormFactory
     }
 
     /**
+     * @return \Symfony\Component\Form\FormTypeInterface[]
+     */
+    protected function createVoucherFormTypes()
+    {
+        return [
+            $this->createVoucherForm(),
+        ];
+    }
+
+    /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $subForms
      *
      * @return \Pyz\Yves\Checkout\Form\Steps\PaymentForm
@@ -162,6 +186,14 @@ class FormFactory extends SprykerFormFactory
     protected function createPaymentForm(SubFormPluginCollection $subForms)
     {
         return new PaymentForm($subForms);
+    }
+
+    /**
+     * @return \Pyz\Yves\Checkout\Form\Steps\VoucherForm
+     */
+    protected function createVoucherForm()
+    {
+        return new VoucherForm();
     }
 
     /**

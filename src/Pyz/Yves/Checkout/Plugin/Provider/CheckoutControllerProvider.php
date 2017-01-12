@@ -17,6 +17,7 @@ class CheckoutControllerProvider extends AbstractYvesControllerProvider
     const CHECKOUT_ADDRESS = 'checkout-address';
     const CHECKOUT_SHIPMENT = 'checkout-shipment';
     const CHECKOUT_PAYMENT = 'checkout-payment';
+    const CHECKOUT_VOUCHER = 'checkout-voucher';
     const CHECKOUT_SUMMARY = 'checkout-summary';
     const CHECKOUT_PLACE_ORDER = 'checkout-place-order';
     const CHECKOUT_ERROR = 'checkout-error';
@@ -53,6 +54,11 @@ class CheckoutControllerProvider extends AbstractYvesControllerProvider
             ->method('GET|POST');
 
         $this->createController('/{checkout}/payment', self::CHECKOUT_PAYMENT, 'Checkout', 'Checkout', 'payment')
+            ->assert('checkout', $allowedLocalesPattern . 'checkout|checkout')
+            ->value('checkout', 'checkout')
+            ->method('GET|POST');
+
+        $this->createController('/{checkout}/voucher', self::CHECKOUT_VOUCHER, 'Checkout', 'Checkout', 'voucher')
             ->assert('checkout', $allowedLocalesPattern . 'checkout|checkout')
             ->value('checkout', 'checkout')
             ->method('GET|POST');

@@ -27,6 +27,7 @@ use Pyz\Yves\Customer\Plugin\Provider\CustomerSecurityServiceProvider;
 use Pyz\Yves\EventJournal\Plugin\Provider\EventJournalServiceProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Heartbeat\Plugin\Provider\HeartbeatControllerProvider;
+use Pyz\Yves\HelloSpryker\Plugin\Provider\HelloSprykerControllerProvider;
 use Pyz\Yves\NewRelic\Plugin\Provider\NewRelicServiceProvider;
 use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
@@ -156,6 +157,7 @@ class YvesBootstrap
             new WishlistControllerProvider($isSsl),
             new HeartbeatControllerProvider($isSsl),
             new NewsletterControllerProvider($isSsl),
+            new HelloSprykerControllerProvider($isSsl),
         ];
     }
 

@@ -97,6 +97,16 @@ class CheckoutController extends AbstractController
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
+    public function voucherAction(Request $request)
+    {
+        return "THIS IS MY VOUCHER CODE";
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function summaryAction(Request $request)
     {
         $viewData = $this->createStepProcess()->process(
