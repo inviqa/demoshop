@@ -125,6 +125,7 @@ class StepFactory extends SprykerStepFactory
     protected function createVoucherStep()
     {
         return new VoucherStep(
+            $this->getCalculationClient(),
             CheckoutControllerProvider::CHECKOUT_VOUCHER,
             ApplicationControllerProvider::ROUTE_HOME
         );

@@ -99,7 +99,15 @@ class CheckoutController extends AbstractController
      */
     public function voucherAction(Request $request)
     {
-        return "THIS IS MY VOUCHER CODE";
+//        return "THIS IS MY VOUCHER CODE";
+        $response = $this->createStepProcess()->process(
+            $request,
+            $this->getFactory()
+                ->createCheckoutFormFactory()
+                ->createVoucherFormCollection()
+        );
+
+        return $response;
     }
 
     /**

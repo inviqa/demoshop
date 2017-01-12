@@ -93,10 +93,17 @@ class FormFactory extends SprykerFormFactory
     public function createVoucherFormCollection()
     {
         return $this->createFormCollection(
-            $this->createVoucherFormTypes(),
-            $this->getVoucherFormDataProviderPlugin()
+            $this->createVoucherFormTypes()
         );
     }
+
+//    /**
+//     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
+//     */
+//    protected function getVoucherFormDataProviderPlugin()
+//    {
+//        return $this->getProvidedDependency(CheckoutDependencyProvider::PLUGIN_VOUCHER_FORM_DATA_PROVIDER);
+//    }
 
     /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection $subForms
