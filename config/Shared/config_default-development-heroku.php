@@ -8,7 +8,6 @@ use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\EventJournal\EventJournalConstants;
 use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Library\DataDirectory;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Payone\PayoneConstants;
@@ -93,9 +92,10 @@ $config[ApplicationConstants::STORE_PREFIX] = 'DEV';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 $config[ApplicationConstants::SHOW_SYMFONY_TOOLBAR] = false;
 
-$config[LogConstants::LOG_LEVEL] = 0;
+$config[LogConstants::LOG_LEVEL] = \Monolog\Logger::INFO;
 $config[EventJournalConstants::WRITERS]['YVES'] = [];
 $config[EventJournalConstants::WRITERS]['ZED'] = [];
 
 $config[NewRelicConstants::NEWRELIC_API_KEY] = getenv('NEW_RELIC_LICENSE_KEY');
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = true;
+$config[\Spryker\Shared\ErrorHandler\ErrorHandlerConstants::ERROR_RENDERER] = \Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer::class;
