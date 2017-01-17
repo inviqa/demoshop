@@ -28,6 +28,7 @@
         <property name="categories" type="StorageProductCategory[]" singular="category" />
         <property name="imageSets" type="array" singular="imageSet" />
         <property name="images" type="StorageProductImage[]" singular="image" />
+        <property name="productCountry" type="string" />
     </transfer>
 
     <transfer name="StorageAttributeMap">

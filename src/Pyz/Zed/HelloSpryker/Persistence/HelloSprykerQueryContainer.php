@@ -14,6 +14,7 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class HelloSprykerQueryContainer extends AbstractQueryContainer implements HelloSprykerQueryContainerInterface
 {
+
     /**
      * @return \Orm\Zed\HelloSpryker\Persistence\PyzHelloSprykerQuery
      */
@@ -22,4 +23,5 @@ class HelloSprykerQueryContainer extends AbstractQueryContainer implements Hello
         $query = $this->getFactory()->createHelloSprykerQuery();
         return $query;
     }
+
 }

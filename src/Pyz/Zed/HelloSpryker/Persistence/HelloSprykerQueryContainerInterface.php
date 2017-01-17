@@ -14,4 +14,5 @@ interface HelloSprykerQueryContainerInterface
      * @return \Orm\Zed\HelloSpryker\Persistence\PyzHelloSprykerQuery
      */
     public function queryHelloSpryker();
+
 }

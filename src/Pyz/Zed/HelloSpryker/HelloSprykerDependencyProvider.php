@@ -7,11 +7,12 @@
 
 namespace Pyz\Zed\HelloSpryker;
 
-use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
 
 class HelloSprykerDependencyProvider extends AbstractBundleDependencyProvider
 {
+
     const FACADE_STRING_FORMAT = 'string_format_facade';
 
     /**
@@ -29,4 +30,5 @@ class HelloSprykerDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
+
 }

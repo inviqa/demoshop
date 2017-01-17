@@ -122,6 +122,7 @@ class ProductAbstractCollector extends AbstractStoragePdoCollector
             StorageProductTransfer::META_KEYWORDS => $collectItemData[self::META_KEYWORDS],
             StorageProductTransfer::META_DESCRIPTION => $collectItemData[self::META_DESCRIPTION],
             StorageProductTransfer::SUPER_ATTRIBUTES_DEFINITION => $this->getVariantSuperAttributes(),
+            'productCountry' => isset($collectItemData['product_country']) ? $collectItemData['product_country'] : null,
         ];
     }
 
