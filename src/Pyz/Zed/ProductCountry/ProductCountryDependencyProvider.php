@@ -13,8 +13,8 @@ use Spryker\Zed\Kernel\Container;
 class ProductCountryDependencyProvider extends AbstractBundleDependencyProvider
 {
 
-    const PRODUCT_FACADE = 'product facade';
-    const COUNTRY_FACADE = 'country facade';
+    const PRODUCT_FACADE = 'facade product';
+    const COUNTRY_FACADE = 'facade country';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container

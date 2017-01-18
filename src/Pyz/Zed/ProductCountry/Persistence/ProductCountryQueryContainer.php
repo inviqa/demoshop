@@ -19,14 +19,14 @@ class ProductCountryQueryContainer extends AbstractQueryContainer implements Pro
      * @param int $idProduct
      * @param int $idCountry
      *
-     * @return \Orm\Zed\ProductCountry\Persistence\SpyProductAbstractCountryQuery
+     * @return \Orm\Zed\ProductCountry\Persistence\PyzProductAbstractCountryQuery
      */
     public function queryProductCountry($idProduct, $idCountry)
     {
         $query = $this->getFactory()->createProductCountryQuery();
 
-        $query->filterByProductId($idProduct);
-        $query->filterByCountryId($idCountry);
+        $query->filterByFkProductAbstract($idProduct);
+        $query->filterByFkCountry($idCountry);
         return $query;
     }
 

@@ -5,23 +5,23 @@
           namespaceAutoPackage="false"
           package="src.Orm.Zed.ProductCountry.Persistence">
 
-    <table name="spy_product_abstract_country" idMethod="native">
-        <column name="id" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
-        <column name="product_id" required="true" type="INTEGER"/>
-        <column name="country_id" required="true" type="INTEGER"/>
+    <table name="pyz_product_abstract_country" idMethod="native" phpName="PyzProductAbstractCountry">
+        <column name="id_product_abstract_country" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product_abstract" required="true" type="INTEGER"/>
+        <column name="fk_country" required="true" type="INTEGER"/>
 
         <foreign-key foreignTable="spy_product_abstract">
-            <reference local="product_id" foreign="id_product_abstract"/>
+            <reference local="fk_product_abstract" foreign="id_product_abstract"/>
         </foreign-key>
         <foreign-key foreignTable="spy_country">
-            <reference local="country_id" foreign="id_country"/>
+            <reference local="fk_country" foreign="id_country"/>
         </foreign-key>
 
-        <unique name="spy_product_abstract_country-unique-product">
-            <unique-column name="product_id"/>
+        <unique name="pyz_product_abstract_country-unique-product">
+            <unique-column name="fk_product_abstract"/>
         </unique>
 
-        <id-method-parameter value="spy_product_abstract_country_pk_seq"/>
+        <id-method-parameter value="pyz_product_abstract_country_pk_seq"/>
     </table>
 
 </database>

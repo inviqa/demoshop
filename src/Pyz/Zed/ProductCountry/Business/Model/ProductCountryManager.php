@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductCountry\Business\Model;
 
-use Orm\Zed\ProductCountry\Persistence\SpyProductAbstractCountry;
+use Orm\Zed\ProductCountry\Persistence\PyzProductAbstractCountry;
 
 class ProductCountryManager implements ProductCountryManagerInterface
 {
@@ -40,7 +40,7 @@ class ProductCountryManager implements ProductCountryManagerInterface
     public function importProductCountryData(array $productCountryData)
     {
         foreach ($productCountryData as $productCountrySku => $productCountryIso2Code) {
-            $this->saveProductCountryEntity($productCountrySku, $productCountryIso2Code);
+            $this->assignCountryToAbstractProduct($productCountrySku, $productCountryIso2Code);
         }
     }
 
@@ -51,24 +51,19 @@ class ProductCountryManager implements ProductCountryManagerInterface
      * @throws \Propel\Runtime\Exception\PropelException
      * @throws \Exception
      */
-    private function saveProductCountryEntity($productCountrySku, $productCountryIso2Code)
+    private function assignCountryToAbstractProduct($productCountrySku, $productCountryIso2Code)
     {
-        try {
-            $productId = $this->productFacade->getProductAbstractIdByConcreteSku($productCountrySku);
-            $countryId = $this->countryFacade->getIdCountryByIso2Code($productCountryIso2Code);
+        $productId = $this->productFacade->getProductAbstractIdByConcreteSku($productCountrySku);
+        $countryId = $this->countryFacade->getIdCountryByIso2Code($productCountryIso2Code);
 
-            $countryEntity = new SpyProductAbstractCountry();
-            $countryEntity->setProductId($productId);
-            $countryEntity->setCountryId($countryId);
+        $countryEntity = new PyzProductAbstractCountry();
+        $countryEntity->setFkProductAbstract($productId);
+        $countryEntity->setFkCountry($countryId);
 
-            $countryEntity->save();
+        $countryEntity->save();
 
-            // Touch product to trigger collector for key/value export
-            $this->productFacade->touchProductActive($productId);
-
-        } catch (\Exception $e) {
-            throw $e;
-        }
+        // Touch product to trigger collector for key/value export
+        $this->productFacade->touchProductActive($productId);
     }
 
 }

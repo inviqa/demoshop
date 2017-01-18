@@ -8,16 +8,16 @@
 namespace Pyz\Zed\ProductCountry\Persistence;
 
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
-use Orm\Zed\ProductCountry\Persistence\SpyProductAbstractCountryQuery;
+use Orm\Zed\ProductCountry\Persistence\PyzProductAbstractCountryQuery;
 
 class ProductCountryPersistenceFactory extends AbstractPersistenceFactory
 {
     /**
-     * @return \Orm\Zed\ProductCountry\Persistence\SpyProductAbstractCountryQuery
+     * @return \Orm\Zed\ProductCountry\Persistence\PyzProductAbstractCountryQuery
      */
     public function createProductCountryQuery()
     {
-        $productCountryQuery = new SpyProductAbstractCountryQuery();
+        $productCountryQuery = new PyzProductAbstractCountryQuery();
         return $productCountryQuery;
     }
 }

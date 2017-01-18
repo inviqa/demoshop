@@ -18,9 +18,8 @@ class ImportController extends AbstractController
     {
         $productCountryData = [
             // 'sku' => 'language' (Country ISO 2 Code)
-            '001_25904006' => 'IT',
-//            '002' => 'DE',
-//            '003' => 'CN',
+//            '001_25904006' => 'IT',
+            '007_21748907' => 'CH',
         ];
 
         try {
@@ -30,6 +29,7 @@ class ImportController extends AbstractController
                 'responseMessage' => $e->getMessage(),
             ];
         }
+
         return [
             'responseMessage' => 'Import Sucessful',
         ];

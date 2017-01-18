@@ -131,10 +131,12 @@
                         </p>
                     {% endfor %}
 
-                    <p class="small-12 medium-6 xlarge-4 xxlarge-3 columns">
-                        <strong>Product Country</strong><br>
-                        {{ product.productCountry }}
-                    </p>
+                    {% if product.productCountry %}
+                        <p class="small-12 medium-6 xlarge-4 xxlarge-3 columns">
+                            <strong>Product Country</strong><br>
+                            {{ product.productCountry }}
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
