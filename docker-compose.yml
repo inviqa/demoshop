@@ -19,9 +19,14 @@ services:
             - APPLICATION_ENV=development-docker
             - WEB_REVERSE_PROXIED="true"
             - WEB_HTTPS="false"
+            - YVES_HOST="localhost"
     redis:
         image: redis:3.0
     elasticsearch:
         image: elasticsearch:5.1
     postgres:
         image: postgres:9.6
+        environment:
+            - POSTGRES_USER=spryker_user
+            - POSTGRES_PASSWORD=spryker_password
+            - POSTGRES_DB=spryker

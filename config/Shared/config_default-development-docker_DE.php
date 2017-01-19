@@ -9,20 +9,12 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 
-$schema = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
-$dbopts = parse_url(getenv(getenv('DATABASE_URL_NAME') ?: 'DATABASE_URL'));
-switch ($dbopts['scheme']) {
-    case 'postgres':
-        $schema = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
-        break;
-}
-
 $config[PropelConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
-$config[PropelConstants::ZED_DB_USERNAME] = $dbopts['user'];
-$config[PropelConstants::ZED_DB_PASSWORD] = $dbopts['pass'];
-$config[PropelConstants::ZED_DB_DATABASE] = ltrim($dbopts['path'], '/');
-$config[PropelConstants::ZED_DB_HOST] = $dbopts['host'];
-$config[PropelConstants::ZED_DB_PORT] = isset($dbopts['port']) ? $dbopts['port'] : 5432;
+$config[PropelConstants::ZED_DB_USERNAME] = "spryker_user";
+$config[PropelConstants::ZED_DB_PASSWORD] = "spryker_password";
+$config[PropelConstants::ZED_DB_DATABASE] = "spryker";
+$config[PropelConstants::ZED_DB_HOST] = "postgres";
+$config[PropelConstants::ZED_DB_PORT] = 5432;
 
 $config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
@@ -30,7 +22,7 @@ $config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search';
 
 $yvesHost = getenv('YVES_HOST');
-$yvesProtocol = getenv('YVES_HOST_PROTOCOL'); //'http://'
+$yvesProtocol = 'http://';
 
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $yvesHost;
 $config[ApplicationConstants::HOST_YVES] = $yvesProtocol . $yvesHost;
