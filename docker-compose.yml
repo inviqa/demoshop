@@ -1,0 +1,25 @@
+version: "2"
+services:
+    web:
+        build: .
+        expose:
+            - 80
+            - 443
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - .:/app
+        depends_on:
+            - redis
+            - elasticsearch
+            - postgres
+        environment:
+            - WEB_DIRECTORY=/app/public/Yves
+            - APPLICATION_ENV=development-docker
+    redis:
+        image: redis:3.0
+    elasticsearch:
+        image: elasticsearch:5.1
+    postgres:
+        image: postgres:9.6
