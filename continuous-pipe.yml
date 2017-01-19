@@ -67,6 +67,9 @@ tasks:
                         volume_mounts:
                             - name: database-volume
                               mount_path: /var/lib/postgresql/data
+                        environment_variables:
+                            - name: PGDATA
+                              value: /var/lib/postgresql/data/pgdata
                     deployment_strategy:
                         readiness_probe:
                             type: tcp
