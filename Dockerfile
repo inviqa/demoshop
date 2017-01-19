@@ -12,4 +12,10 @@ ARG SYMFONY_ENV=prod
 ENV SYMFONY_ENV $SYMFONY_ENV
 
 COPY . /app
-RUN container build
+WORKDIR /app
+
+RUN container build && \
+    antelope install && \
+    antelope build zed && \
+    antelope build yves
+
