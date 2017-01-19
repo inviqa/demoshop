@@ -17,6 +17,8 @@ services:
         environment:
             - WEB_DIRECTORY=/app/public/Yves
             - APPLICATION_ENV=development-docker
+            - WEB_REVERSE_PROXIED="true"
+            - WEB_HTTPS="false"
     redis:
         image: redis:3.0
     elasticsearch:

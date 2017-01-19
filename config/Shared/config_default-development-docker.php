@@ -36,8 +36,6 @@ $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
 
-$elastica = parse_url(getenv(getenv('ELASTIC_SEARCH_URL_NAME') ?: 'ELASTIC_SEARCH_URL'));
-$b64 = base64_encode($elastica['user'] . ':' . $elastica['pass']);
 $config[ApplicationConstants::ELASTICA_PARAMETER__HOST]
     = $config[SearchConstants::ELASTICA_PARAMETER__HOST]
     = "elasticsearch";
@@ -46,7 +44,7 @@ $config[ApplicationConstants::ELASTICA_PARAMETER__TRANSPORT]
     = "http";
 $config[ApplicationConstants::ELASTICA_PARAMETER__PORT]
     = $config[SearchConstants::ELASTICA_PARAMETER__PORT]
-    = 80;
+    = 9200;
 
 $config[ApplicationConstants::JENKINS_BASE_URL] = 'http://' . $config[ApplicationConstants::HOST_ZED_GUI] . ':10007/jenkins';
 $config[ApplicationConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
