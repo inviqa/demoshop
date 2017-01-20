@@ -21,15 +21,15 @@ services:
             - WEB_HTTPS="false"
             - YVES_HOST="localhost"
     redis:
-        image: redis:3.0
+        image: redis:3.2
         expose:
             - 6379
     elasticsearch:
-        image: elasticsearch:5.1
+        image: elasticsearch:2.4
         expose:
             - 9200
     postgres:
-        image: postgres:9.6
+        image: postgres:9.4
         expose:
             - 5432
         environment:
