@@ -86,6 +86,8 @@ tasks:
             environment_variables:
                 - name: SYMFONY_ENV
                   value: ${SYMFONY_ENV}
+                  name: APPLICATION_ENV
+                  value: development-docker
 
         filter:
             expression: 'tasks.deployment.services.postgres.created'
