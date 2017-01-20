@@ -9,6 +9,7 @@ namespace Pyz\Zed\Console;
 
 use Pyz\Zed\Importer\Communication\Console\DemoDataImportConsole;
 use Pyz\Zed\Updater\Communication\Console\UpdaterConsole;
+use Pyz\Zed\Search\Communication\Console\PageIndexMapGeneratorConsole;
 use Spryker\Shared\Library\Environment;
 use Spryker\Zed\Application\Communication\Console\ApplicationIntegrationCheckConsole;
 use Spryker\Zed\Application\Communication\Console\BuildNavigationConsole;
@@ -89,6 +90,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new JenkinsDisableConsole(),
             new JenkinsGenerateConsole(),
             new DeployPreparePropelConsole(),
+            new PageIndexMapGeneratorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
