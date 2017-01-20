@@ -90,6 +90,7 @@ tasks:
                 - vendor/bin/console import:demo-data
                 - vendor/bin/console collector:search:export
                 - vendor/bin/console collector:storage:export
+                - vendor/bin/console setup:search
 
             environment_variables:
                 - name: SYMFONY_ENV
