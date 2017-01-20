@@ -22,5 +22,6 @@ RUN container build && \
     antelope install && \
     antelope build zed && \
     antelope build yves && \
+    mkdir /app/data && \
     chmod -R 777 /app/data
 
