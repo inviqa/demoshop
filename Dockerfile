@@ -21,5 +21,6 @@ WORKDIR /app
 RUN container build && \
     antelope install && \
     antelope build zed && \
-    antelope build yves
+    antelope build yves && \
+    chmod -R 777 /app/data
 
