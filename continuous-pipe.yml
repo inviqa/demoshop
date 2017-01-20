@@ -113,6 +113,7 @@ tasks:
                 - vendor/bin/console collector:search:export
                 - vendor/bin/console collector:storage:export
                 - vendor/bin/console setup:search
+                - vendor/bin/console application:build-navigation-cache
 
             environment_variables:
                 - name: SYMFONY_ENV
