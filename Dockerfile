@@ -11,6 +11,10 @@ ARG GITHUB_TOKEN=
 ARG SYMFONY_ENV=prod
 ENV SYMFONY_ENV $SYMFONY_ENV
 
+# This is required to have Composer's `dev` dependencies... required by
+# some initialization commands.
+ENV DEVELOPMENT_MODE true
+
 COPY . /app
 WORKDIR /app
 

@@ -20,6 +20,7 @@ services:
             - WEB_REVERSE_PROXIED="true"
             - WEB_HTTPS="false"
             - YVES_HOST="localhost"
+            - DEVELOPMENT_MODE=true
     redis:
         image: redis:3.2
         expose:
