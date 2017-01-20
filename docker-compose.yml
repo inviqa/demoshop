@@ -1,6 +1,26 @@
 version: "2"
 services:
-    web:
+    yves:
+        build: .
+        expose:
+            - 80
+            - 443
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - .:/app
+        depends_on:
+            - redis
+            - elasticsearch
+        environment:
+            - WEB_DIRECTORY=/app/public/Yves
+            - APPLICATION_ENV=development-docker
+            - WEB_REVERSE_PROXIED="true"
+            - WEB_HTTPS="false"
+            - YVES_HOST="localhost"
+            - DEVELOPMENT_MODE=true
+    zed:
         build: .
         expose:
             - 80
@@ -15,7 +35,7 @@ services:
             - elasticsearch
             - postgres
         environment:
-            - WEB_DIRECTORY=/app/public/Yves
+            - WEB_DIRECTORY=/app/public/Zed
             - APPLICATION_ENV=development-docker
             - WEB_REVERSE_PROXIED="true"
             - WEB_HTTPS="false"

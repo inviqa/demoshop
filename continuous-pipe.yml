@@ -1,12 +1,19 @@
 variables:
     - name: SYMFONY_ENV
       value: prod
+    - name: YVES_HOST
+      value: ${SERVICE_YVES_PUBLIC_ENDPOINT}
+    - name: ZED_HOST
+      value: ${SERVICE_ZED_PUBLIC_ENDPOINT}
 
 tasks:
     images:
         build:
             services:
-                web:
+                yves:
+                    image: ${IMAGE_NAME}
+                    naming_strategy: sha1
+                zed:
                     image: ${IMAGE_NAME}
                     naming_strategy: sha1
     deployment:
@@ -15,7 +22,7 @@ tasks:
             environment:
                 name: '"spryker-" ~ code_reference.branch'
             services:
-                web:
+                yves:
                     specification:
                         accessibility:
                             from_external: true
@@ -24,8 +31,21 @@ tasks:
                               value: ${SYMFONY_ENV}
                             - name: APPLICATION_ENV
                               value: development-docker
-                            - name: YVES_HOST
-                              value: ${YVES_HOST}
+                    deployment_strategy:
+                        readiness_probe:
+                            type: tcp
+                            port: 80
+                zed:
+                    specification:
+                        accessibility:
+                            from_external: true
+                        environment_variables:
+                            - name: SYMFONY_ENV
+                              value: ${SYMFONY_ENV}
+                            - name: APPLICATION_ENV
+                              value: development-docker
+                            - name: ZED_HOST
+                              value: ${ZED_HOST}
                     deployment_strategy:
                         readiness_probe:
                             type: tcp
