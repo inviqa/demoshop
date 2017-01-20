@@ -24,6 +24,14 @@ tasks:
                               value: ${SYMFONY_ENV}
                             - name: APPLICATION_ENV
                               value: development-docker
+                        volumes:
+                            - type: persistent
+                              name: data-volume
+                              capacity: 1Gi
+                              storage_class: default
+                        volume_mounts:
+                            - name: data-volume
+                              mount_path: /app/data
                     deployment_strategy:
                         readiness_probe:
                             type: tcp
