@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
 ARG GITHUB_TOKEN=
 ARG SYMFONY_ENV=prod
 ENV SYMFONY_ENV $SYMFONY_ENV
-
+ENV APPLICATION_ENV development-docker
 # This is required to have Composer's `dev` dependencies... required by
 # some initialization commands.
 ENV DEVELOPMENT_MODE true
@@ -22,6 +22,7 @@ RUN container build && \
     antelope install && \
     antelope build zed && \
     antelope build yves && \
-    mkdir /app/data && \
+    vendor/bin/console setup:deploy:prepare-propel && \
+    vendor/bin/console transfer:generate && \
     chmod -R 777 /app/data
 
