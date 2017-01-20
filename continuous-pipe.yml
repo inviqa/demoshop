@@ -103,6 +103,9 @@ pipelines:
     - name: Production
       condition: 'not(code_reference.branch matches "/^cpdev/")'
       tasks: [ images, deployment, initialization ]
+      variables:
+          - name: APPLICATION_ENV
+            value: development-docker
     - name: Remote
       condition: 'code_reference.branch matches "/^cpdev/"'
       tasks: [ images, deployment, initialization ]
