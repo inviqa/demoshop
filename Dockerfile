@@ -24,5 +24,6 @@ RUN container build && \
     antelope build yves && \
     vendor/bin/console setup:deploy:prepare-propel && \
     vendor/bin/console transfer:generate && \
+    vendor/bin/console setup:search && \
     chmod -R 777 /app/data
 
