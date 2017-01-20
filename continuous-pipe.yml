@@ -102,7 +102,7 @@ tasks:
         run:
             cluster: ${CLUSTER}
             image:
-                from_service: web
+                from_service: zed
 
             environment:
                 name: '"spryker-" ~ code_reference.branch'
