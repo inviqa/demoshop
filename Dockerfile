@@ -25,5 +25,6 @@ RUN container build && \
     vendor/bin/console setup:deploy:prepare-propel && \
     vendor/bin/console transfer:generate && \
     vendor/bin/console setup:generate-pageindexmap && \
+    vendor/bin/console application:build-navigation-cache && \
     chmod -R 777 /app/data
 
