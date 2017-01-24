@@ -42,7 +42,7 @@ services:
             - YVES_HOST="localhost"
             - DEVELOPMENT_MODE=true
     redis:
-        image: redis:3.2
+        image: quay.io/continuouspipe/redis:3.2
         expose:
             - 6379
     elasticsearch:
