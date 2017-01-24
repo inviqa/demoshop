@@ -13,6 +13,9 @@ tasks:
                 zed:
                     image: ${IMAGE_NAME}
                     naming_strategy: sha1
+                yves:
+                    image: ${IMAGE_NAME}
+                    naming_strategy: sha1
     deployment:
         deploy:
             cluster: ${CLUSTER}
@@ -35,8 +38,6 @@ tasks:
                             type: tcp
                             port: 80
                 yves:
-                    source:
-                        from_service: zed
                     specification:
                         accessibility:
                             from_external: true
