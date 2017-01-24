@@ -10,9 +10,6 @@ tasks:
     images:
         build:
             services:
-                yves:
-                    image: ${IMAGE_NAME}
-                    naming_strategy: sha1
                 zed:
                     image: ${IMAGE_NAME}
                     naming_strategy: sha1
@@ -22,7 +19,7 @@ tasks:
             environment:
                 name: '"spryker-" ~ code_reference.branch'
             services:
-                yves:
+                zed:
                     specification:
                         accessibility:
                             from_external: true
@@ -31,11 +28,15 @@ tasks:
                               value: ${SYMFONY_ENV}
                             - name: APPLICATION_ENV
                               value: development-docker
+                            - name: ZED_HOST
+                              value: ${ZED_HOST}
                     deployment_strategy:
                         readiness_probe:
                             type: tcp
                             port: 80
-                zed:
+                yves:
+                    source:
+                        from_service: zed
                     specification:
                         accessibility:
                             from_external: true
