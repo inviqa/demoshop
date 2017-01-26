@@ -1,7 +1,7 @@
 FROM quay.io/continuouspipe/symfony-php7.1-nginx:latest
 
 RUN apt-get update && \
-    apt-get install -y php7.0-pgsql php7.0-gmp postgresql-client
+    apt-get install -y php7.1-pgsql php7.1-gmp postgresql-client
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
     apt-get install -y nodejs build-essential && \
