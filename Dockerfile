@@ -1,4 +1,4 @@
-FROM quay.io/continuouspipe/symfony-php7.1-nginx:v1.0
+FROM quay.io/continuouspipe/symfony-php7.1-nginx:latest
 
 RUN apt-get update && \
     apt-get install -y php7.0-pgsql php7.0-gmp postgresql-client
