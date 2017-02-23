@@ -24,7 +24,7 @@ $config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME]
 $yvesHost = getenv('YVES_HOST');
 $yvesProtocol = 'http://';
 
-$config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = "www.de.demoshop.local";
+$config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = getenv('SERVICE_YVES_PUBLIC_ENDPOINT');
 $config[ApplicationConstants::HOST_YVES] = $yvesProtocol . $yvesHost;
 $config[ApplicationConstants::HOST_STATIC_ASSETS] = $config[ApplicationConstants::HOST_STATIC_MEDIA] = $yvesHost;
 

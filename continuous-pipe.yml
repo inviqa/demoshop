@@ -21,6 +21,8 @@ tasks:
             services:
                 zed:
                     specification:
+                        source:
+                            from_service: web
                         accessibility:
                             from_external: true
                         environment_variables:
