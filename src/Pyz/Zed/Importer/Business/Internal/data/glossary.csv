@@ -682,13 +682,13 @@ customer.account.wishlist.continue-shopping,"Weiter shoppen",de_DE
 customer.account.wishlist.product,"Produkt",de_DE
 customer.account.wishlist.price,"Preis",de_DE
 customer.account.wishlist.add-to-cart,"In den Warenkorb",de_DE
-customer.account.wishlist.remove,"Lösen",de_DE
+customer.account.wishlist.remove,"Löschen",de_DE
 customer.account.wishlist.product-not-available,"Dieses Produkt ist momentan nicht verfügbar.",de_DE
 customer.account.wishlist.view-in-shop,"Produktdetails",de_DE
-customer.account.wishlist.overview.sku,"Sku",en_US
-customer.account.wishlist.overview.name,"Name",en_US
-customer.account.wishlist.overview.price,"Preis",en_US
-customer.account.wishlist.overview.variant,"Produktvariante",en_US
+customer.account.wishlist.overview.sku,"Sku",de_DE
+customer.account.wishlist.overview.name,"Name",de_DE
+customer.account.wishlist.overview.price,"Preis",de_DE
+customer.account.wishlist.overview.variant,"Produktvariante",de_DE
 newsletter.subscribe,"Subscribe for newsletter",en_US
 newsletter.subscribe,"In den Newsletter eintragen",de_DE
 pagination.previous,"Previous",en_US
@@ -727,7 +727,7 @@ product.attribute.themes,Themes,en_US
 product.attribute.themes,Themen,de_DE
 product.attribute.usb_port,USB port,en_US
 product.attribute.usb_port,USB-Port,de_DE
-cart.pre.check.availability.failed, "Currently we have only stock of this product available.",en_US
+cart.pre.check.availability.failed, "The availability of product sku is stock at the moment.",en_US
 cart.pre.check.availability.failed, "Zurzeit haben wir nur stock von diesem Produkt zur Verfügung.",de_DE
 product.detail.out_of_stock, "This product is currently not available.",en_US
 product.detail.out_of_stock, "Das Produkt ist zur Zeit nicht verfügbar.",de_DE
@@ -803,3 +803,25 @@ mail.order.shipped.footer.text_line_1,"Viele Grüße",de_DE
 mail.order.shipped.footer.text_line_1,"Have a great day!",en_US
 mail.order.shipped.footer.text_line_2,"Dein Spryker Shop",de_DE
 mail.order.shipped.footer.text_line_2,"Your Spryker Shop",en_US
+cart.voucher.remove,"Remove",en_US
+cart.voucher.remove,"Entfernen",de_DE
+cart.vouchers.clear-all,"Clear all",en_US
+cart.vouchers.clear-all,"Alle entfernen",de_DE
+cart.voucher.apply.failed,"Your voucher code is invalid.",en_US
+cart.voucher.apply.failed,"Ihr Gutscheincode ist ungültig.",de_DE
+cart.item.bundle.description,"Items in the bundle:",en_US
+cart.item.bundle.description,"Produkte in diesem Bündel:",de_DE
+checkout.summary.item.bundle.description,"Items in the bundle:",en_US
+checkout.summary.item.bundle.description,"Produkte in diesem Bündel:",de_DE
+customer.order.bundled_items,"Produkte in diesem Bündel:",de_DE
+customer.order.bundled_items,"Items in the bundle:",en_US
+customer.order.options,"Produktoptionen:",de_DE
+customer.order.options,"Product options:",en_US
+countries.iso.AT,"Österreich",de_DE
+countries.iso.AT,"Austria",en_US
+cart.item.option.description,"Product options:",en_US
+cart.item.option.description,"Produktoptionen:",de_DE
+cart.item.sku,"SKU",en_US
+cart.item.sku,"SKU",de_DE
+checkout.summary.item.option.description,"Product options:",en_US
+checkout.summary.item.option.description,"Produktoptionen:",de_DE

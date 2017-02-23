@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Importer\Business\Importer\Cms;
 
+use Generated\Shared\Transfer\UrlTransfer;
 use Orm\Zed\Cms\Persistence\SpyCmsPageQuery;
 
 class CmsPageImporter extends CmsBlockImporter
@@ -39,17 +40,19 @@ class CmsPageImporter extends CmsBlockImporter
         $page = $this->format($data);
         $templateTransfer = $this->findOrCreateTemplate($page[self::TEMPLATE]);
 
+        $pageTransfer = $this->createPage($templateTransfer, $page);
+
         foreach ($this->localeFacade->getLocaleCollection() as $locale => $localeTransfer) {
-            $url = $page[self::LOCALES][$locale][self::URL];
-            if ($this->urlFacade->hasUrl($url)) {
+            $urlTransfer = new UrlTransfer();
+            $urlTransfer->setUrl($page[self::LOCALES][$locale][self::URL]);
+
+            if ($this->urlFacade->hasUrl($urlTransfer)) {
                 return;
             }
 
-            $pageTransfer = $this->createPage($templateTransfer, $page);
-
             $placeholders = $page[self::LOCALES][$locale][self::PLACEHOLDERS];
 
-            $this->createPageUrl($pageTransfer, $url, $localeTransfer);
+            $this->createPageUrl($pageTransfer, $urlTransfer->getUrl(), $localeTransfer);
             $this->createPlaceholder($placeholders, $pageTransfer, $localeTransfer);
         }
     }

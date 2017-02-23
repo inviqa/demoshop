@@ -53,7 +53,7 @@ function successText {
 }
 
 function warningText {
-    echo -e "\n${YELLOW_BKG}${RED_TEXT}=> ${1} <=${NC}\n"
+    echo -e "\n${YELLOW_BKG}${BLACK_TEXT}=> ${1} <=${NC}\n"
 }
 
 function setupText {
@@ -127,8 +127,6 @@ function installDemoshop {
     sleep 1
     installYves
 
-    configureCodeception
-
     successText "Setup successful"
 }
 
@@ -164,23 +162,17 @@ function installZed {
     labelText "Setting up IDE autocompletion"
     $CONSOLE dev:ide:generate-auto-completion $VERBOSITY
 
-    antelopeInstallZed
+    setupZedFrontend
 
-    labelText "Zed setup successful"
+    labelText "Zed setup completed successfully"
 }
 
 function installYves {
     setupText "Yves setup"
 
-    antelopeInstallYves
+    setupYvesFrontend
 
-    labelText "Yves setup successful"
-}
-
-function configureCodeception {
-    labelText "Configuring test environment"
-    vendor/bin/codecept build -q $VERBOSITY
-    writeErrorMessage "Test configuration failed"
+    labelText "Yves setup completed successfully"
 }
 
 function optimizeRepo {
@@ -191,12 +183,12 @@ function optimizeRepo {
 }
 
 function resetDataStores {
-    labelText "Flushing Elasticsearch"
-    curl -XDELETE 'http://localhost:10005/de_search/'
+    labelText "Flushing Elasticsearch index ${ELASTIC_SEARCH_INDEX}"
+    curl -XDELETE 'http://localhost:'${ELASTIC_SEARCH_PORT}'/'${ELASTIC_SEARCH_INDEX}'/'
     writeErrorMessage "Elasticsearch reset failed"
 
     labelText "Flushing Redis"
-    redis-cli -p 10009 FLUSHALL
+    redis-cli -p $REDIS_PORT FLUSHALL
     writeErrorMessage "Redis reset failed"
 }
 
@@ -224,14 +216,14 @@ function resetDevelopmentState {
 }
 
 function dropDevelopmentDatabase {
-    if [ `sudo psql -l | grep ${DATABASE_NAME} | wc -l` -ne 0 ]; then
+    if [ `sudo -u postgres psql -l | grep ${DATABASE_NAME} | wc -l` -ne 0 ]; then
 
         PG_CTL_CLUSTER=`which pg_ctlcluster`
         DROP_DB=`which dropdb`
 
         if [[ -f $PG_CTL_CLUSTER ]] && [[ -f $DROP_DB ]]; then
             labelText "Deleting PostgreSql Database: ${DATABASE_NAME} "
-            sudo pg_ctlcluster 9.4 main restart --force && sudo dropdb $DATABASE_NAME 1>/dev/null
+            sudo pg_ctlcluster 9.4 main restart --force && sudo -u postgres dropdb $DATABASE_NAME 1>/dev/null
             writeErrorMessage "Deleting DB command failed"
         fi
     fi
@@ -291,56 +283,6 @@ function resetYves {
         labelText "Clear cache"
         rm -rf "./data/DE/cache"
         writeErrorMessage "Could not remove cache directory"
-    fi
-}
-
-function checkNodejsVersion {
-    if [[ `node -v | grep -E '^v[0-4]'` ]]; then
-        labelText "Upgrade Node.js"
-        $CURL -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-
-        sudo apt-get install -y nodejs
-
-        successText "Node.js updated to version `node -v`"
-        successText "NPM updated to version `$NPM -v`"
-    fi
-}
-
-function installAntelope {
-    checkNodejsVersion
-
-    labelText "Install or Update Antelope tool globally"
-    sudo $NPM install -g antelope
-    writeErrorMessage "Antelope setup failed"
-}
-
-function antelopeInstallZed {
-    installAntelope
-
-    ANTELOPE_TOOL=`which antelope`
-
-    if [[ -f $ANTELOPE_TOOL ]]; then
-        labelText "Installing project dependencies"
-        $ANTELOPE_TOOL install
-
-        labelText "Building and optimizing assets for Zed"
-        $ANTELOPE_TOOL build zed
-        writeErrorMessage "Antelope build failed"
-    fi
-}
-
-function antelopeInstallYves {
-    installAntelope
-
-    ANTELOPE_TOOL=`which antelope`
-
-    if [[ -f $ANTELOPE_TOOL ]]; then
-        labelText "Installing project dependencies"
-        $ANTELOPE_TOOL install
-
-        labelText "Building and optimizing assets for Yves"
-        $ANTELOPE_TOOL build yves
-        writeErrorMessage "Antelope build failed"
     fi
 }
 
